@@ -1,0 +1,21 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+        - modules
+    # Level 9 is the highest level
+    level: 9
+    ignoreErrors:
+       -
+            message: '#Cannot access property \$token on Modules\\User\\Domain\\Models\\User\|null.#'
+            path:  modules/Authorization/Application/Http/Controllers/Api/V1/AuthorizationController.php
+       -
+            message: '#Cannot call method createToken\(\) on Modules\\User\\Domain\\Models\\User\|null.#'
+            path:  modules/Authorization/Application/Http/Controllers/Api/V1/AuthorizationController.php
+       -
+            message: '#Parameter \#1 \$name of method Modules\\User\\Domain\\Models\\User::createToken\(\) expects string, mixed given.#'
+            path:  modules/Authorization/Application/Http/Controllers/Api/V1/RegistrationController.php
+#
+#    checkMissingIterableValueType: false
