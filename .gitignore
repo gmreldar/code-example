@@ -23,6 +23,6 @@ storage/debugbar/
 .php-cs-fixer.cache
 _ide_helper.php
 _ide_helper_models.php
-dump
+dumps
 pg
 docker/logs

@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Authorization\Providers\AuthorizationProvider;
+use Modules\Authorization\Providers\AuthorizationServiceProvider;
 use Modules\User\Providers\UserServiceProvider;
+use Modules\Vehicle\Providers\VehicleServiceProvider;
+use MongoDB\Laravel\MongoDBServiceProvider;
 
 return [
 
@@ -172,9 +174,11 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        MongoDBServiceProvider::class,
 
         UserServiceProvider::class,
-        AuthorizationProvider::class,
+        AuthorizationServiceProvider::class,
+        VehicleServiceProvider::class
 
     ])->toArray(),
 

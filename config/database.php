@@ -77,6 +77,17 @@ return [
             'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'host'     => env('MONGO_HOST', 'mongo'),
+            'port'     => env('MONGO_PORT'),
+            'database' => env('MONGO_DATABASE'),
+            'username' => env('MONGO_USER', 'root'),
+            'password' => env('MONGO_PASSWORD', 'root'),
+            'options'  => [
+                'database' => env('MONGO_AUTH_DATABASE', 'admin')
+            ]
+        ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

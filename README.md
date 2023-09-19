@@ -188,5 +188,12 @@ make xdebug
 - Сохранить
 
 
+### Прочее
+- Репозиторий с бд авто https://github.com/blanzh/carsBase
+- Войти в докер образ:
+```
+ docker exec -it auto_wallet_app-php-fpm-1 bash
+```
+
 [link-laravel]: https://laravel.com/docs
 [link-docker]: https://www.docker.com/products/docker-desktop/

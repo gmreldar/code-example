@@ -6,7 +6,7 @@ namespace Modules\Authorization\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class AuthorizationProvider extends ServiceProvider
+class AuthorizationServiceProvider extends ServiceProvider
 {
     /**
      * All of the container bindings that should be registered.
