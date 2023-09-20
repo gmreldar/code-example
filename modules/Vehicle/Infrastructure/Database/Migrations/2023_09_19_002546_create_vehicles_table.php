@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('cyrillic_name');
+            $table->boolean('is_popular')->default(false);
+            $table->string('country');
+            $table->json('models');
             $table->timestamps();
         });
     }

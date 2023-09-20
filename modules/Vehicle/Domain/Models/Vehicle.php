@@ -4,36 +4,38 @@ declare(strict_types=1);
 
 namespace Modules\Vehicle\Domain\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use MongoDB\BSON\ObjectId;
-use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
- * @property ObjectId $_id
+ * \Modules\Vehicle\Domain\Models\Vehicle
+ *
  * @property int $id
  * @property string $name
  * @property string $cyrillic_name
- * @property boolean $is_popular
+ * @property bool $is_popular
  * @property string $country
  * @property array $models
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|Vehicle newModelQuery()
+ * @method static Builder|Vehicle newQuery()
+ * @method static Builder|Vehicle query()
+ * @method static Builder|Vehicle whereCountry($value)
+ * @method static Builder|Vehicle whereCreatedAt($value)
+ * @method static Builder|Vehicle whereCyrillicName($value)
+ * @method static Builder|Vehicle whereId($value)
+ * @method static Builder|Vehicle whereIsPopular($value)
+ * @method static Builder|Vehicle whereModels($value)
+ * @method static Builder|Vehicle whereName($value)
+ * @method static Builder|Vehicle whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Vehicle extends Model
 {
     use HasFactory;
-
-    /**
-     * The connection name for the model.
-     *
-     * @var string|null
-     */
-    protected $connection = 'mongodb';
-
-    /**
-     * The collection associated with the model.
-     *
-     * @var string
-     */
-    protected $collection = 'vehicles';
 
     /**
      * The attributes that are mass assignable.
@@ -41,7 +43,6 @@ class Vehicle extends Model
      * @var array<string>
      */
     protected $fillable = [
-        'id',
         'name',
         'cyrillic_name',
         'is_popular',
@@ -56,5 +57,6 @@ class Vehicle extends Model
      */
     protected $casts = [
         'popular' => 'boolean',
+        'models' => 'array',
     ];
 }

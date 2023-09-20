@@ -125,7 +125,7 @@ docker-compose exec php-fpm composer phpstan
 - Также следует запускать команду, по регенерации хелперов модели
 
 ```
-docker-compose exec php-fpm artisan ide-helper:models "Modules/Path/To/Model"
+docker-compose exec php-fpm php artisan ide-helper:models "\Modules\Path\To\Model"
 ```
 
 ### 11. Доступ к сайту

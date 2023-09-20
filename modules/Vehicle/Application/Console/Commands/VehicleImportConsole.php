@@ -28,7 +28,7 @@ class VehicleImportConsole extends Command
      */
     public function handle(): void
     {
-        $path = base_path('dumps/mongo/cars.json');
+        $path = base_path('dumps/pg/cars.json');
         resolve(VehicleImportService::class)->import($path);
     }
 }
