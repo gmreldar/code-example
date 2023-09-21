@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Modules\Vehicle\Tests\Feature\Infrastructure\Services;
 
 use Illuminate\Support\Facades\File;
-use Modules\Vehicle\Infrastructure\Services\VehicleImportService;
+use Modules\Vehicle\Api\VehicleImportServiceInterface;
 use Tests\TestCase;
 
 class VehicleImportServiceTest extends TestCase
 {
-    private VehicleImportService $vehicleImportService;
+    private VehicleImportServiceInterface $vehicleImportService;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->vehicleImportService = resolve(VehicleImportService::class);
+        $this->vehicleImportService = resolve(VehicleImportServiceInterface::class);
     }
 
     public function testImport(): void

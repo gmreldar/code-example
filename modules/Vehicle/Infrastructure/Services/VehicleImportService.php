@@ -5,31 +5,34 @@ declare(strict_types=1);
 namespace Modules\Vehicle\Infrastructure\Services;
 
 use Exception;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use Modules\Vehicle\Domain\Models\Vehicle;
+use Modules\Vehicle\Api\VehicleImportServiceInterface;
+use Modules\Vehicle\Api\VehicleRepositoryInterface;
+use Modules\Vehicle\Infrastructure\Converters\VehicleJsonDataConverter;
 
 /**
  * Сервис для импорта транспортных средств
  */
-class VehicleImportService
+class VehicleImportService implements VehicleImportServiceInterface
 {
+    public function __construct(
+        private readonly VehicleJsonDataConverter $vehicleJsonDataConverter,
+        private readonly VehicleRepositoryInterface $vehicleRepository
+    ) {
+    }
+
+    /**
+     * Импорт транспортных средств из json файла
+     *
+     * @param string $filePath
+     * @return void
+     */
     public function import(string $filePath): void
     {
-        DB::beginTransaction();
         try {
-            Vehicle::truncate();
-            $vehicles = (array)json_decode(File::get($filePath), true);
-
-            /** @var array<string, mixed> $vehicle */
-            foreach ($vehicles as $vehicle) {
-                $vehicle['models'] = json_encode($vehicle['models']);
-                Vehicle::create($vehicle);
-            }
-            DB::commit();
+            $vehicleCollection = $this->vehicleJsonDataConverter->convert($filePath);
+            $this->vehicleRepository->recreate($vehicleCollection);
         } catch (Exception $exception) {
             echo $exception->getMessage();
-            DB::rollBack();
         }
     }
 }

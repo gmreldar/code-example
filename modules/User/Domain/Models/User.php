@@ -16,6 +16,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\PersonalAccessToken;
+use Modules\User\Infrastructure\Database\Factories\UserFactory;
 
 /**
  * Modules\User\Domain\Models\User
@@ -48,6 +49,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static Builder|User wherePhoneVerifiedAt($value)
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
+ * @method static UserFactory factory($count = null, $state = [])
  * @mixin Eloquent
  */
 class User extends Authenticatable
@@ -89,4 +91,14 @@ class User extends Authenticatable
         'birthdate' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return UserFactory
+     */
+    protected static function newFactory(): UserFactory
+    {
+        return new UserFactory();
+    }
 }

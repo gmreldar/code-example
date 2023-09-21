@@ -7,6 +7,7 @@ parameters:
         - modules
     # Level 9 is the highest level
     level: 9
+    checkGenericClassInNonGenericObjectType: false
     ignoreErrors:
        -
             message: '#Cannot access property \$token on Modules\\User\\Domain\\Models\\User\|null.#'

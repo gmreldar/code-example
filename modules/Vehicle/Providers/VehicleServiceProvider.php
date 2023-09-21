@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Modules\Vehicle\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Vehicle\Api\VehicleImportServiceInterface;
+use Modules\Vehicle\Api\VehicleRepositoryInterface;
 use Modules\Vehicle\Application\Console\Commands\VehicleImportConsole;
+use Modules\Vehicle\Infrastructure\Repositories\VehicleRepository;
+use Modules\Vehicle\Infrastructure\Services\VehicleImportService;
 
 class VehicleServiceProvider extends ServiceProvider
 {
@@ -14,7 +18,10 @@ class VehicleServiceProvider extends ServiceProvider
      *
      * @var array<string, string>
      */
-    public array $bindings = [];
+    public array $bindings = [
+        VehicleRepositoryInterface::class => VehicleRepository::class,
+        VehicleImportServiceInterface::class => VehicleImportService::class
+    ];
 
     public function boot(): void
     {

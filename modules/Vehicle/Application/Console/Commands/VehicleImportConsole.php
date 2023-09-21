@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Vehicle\Application\Console\Commands;
 
 use Illuminate\Console\Command;
-use Modules\Vehicle\Infrastructure\Services\VehicleImportService;
+use Modules\Vehicle\Api\VehicleImportServiceInterface;
 
 class VehicleImportConsole extends Command
 {
@@ -29,6 +29,6 @@ class VehicleImportConsole extends Command
     public function handle(): void
     {
         $path = base_path('dumps/pg/cars.json');
-        resolve(VehicleImportService::class)->import($path);
+        resolve(VehicleImportServiceInterface::class)->import($path);
     }
 }
