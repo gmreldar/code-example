@@ -12,6 +12,6 @@ class UnauthorizedHttpException extends Exception
 {
     public function render(): JsonResponse
     {
-        return new JsonResponse(['message' => 'Unauthorized.'], Response::HTTP_UNAUTHORIZED);
+        return new JsonResponse(['message' => 'Unauthenticated.'], Response::HTTP_UNAUTHORIZED);
     }
 }

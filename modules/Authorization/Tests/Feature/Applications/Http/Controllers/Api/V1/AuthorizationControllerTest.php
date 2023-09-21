@@ -65,7 +65,7 @@ class AuthorizationControllerTest extends TestCase
 
         // Проверяем, что в ответе есть сообщение об ошибке
         $response->assertJsonFragment([
-            'message' => 'Unauthorized.',
+            'message' => 'Unauthenticated.',
         ]);
     }
 }
