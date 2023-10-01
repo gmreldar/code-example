@@ -42,7 +42,8 @@ class UserVehicleControllerTest extends TestCase
             'purchase_date' => now()->subYears(rand (1, 3)),
             'fuel_type' => FuelType::AI_95
         ];
-        $response = $this->postJson('/api/v1/user-vehicles/add', $data, $headers);
+        $response = $this->postJson('/api/v1/user/vehicles/add', $data, $headers);
+        $c = json_decode($response->baseResponse->content());
         $response->assertStatus(201);
         $response->assertJsonStructure([
             'data' => [
@@ -83,7 +84,7 @@ class UserVehicleControllerTest extends TestCase
             'purchase_date' => now()->subYears(rand (1, 3)),
             'fuel_type' => FuelType::AI_95
         ];
-        $response = $this->postJson('/api/v1/user-vehicles/add', $data, $headers);
+        $response = $this->postJson('/api/v1/user/vehicles/add', $data, $headers);
 
         $response->assertStatus(401);
 
@@ -103,7 +104,7 @@ class UserVehicleControllerTest extends TestCase
             'Content-Type' => 'application/json',
         ];
         $data = [];
-        $response = $this->postJson('/api/v1/user-vehicles/add', $data, $headers);
+        $response = $this->postJson('/api/v1/user/vehicles/add', $data, $headers);
         $response->assertStatus(422)
             ->assertJsonValidationErrors([
                 'vehicle_id',
