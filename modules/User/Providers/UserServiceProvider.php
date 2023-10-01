@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\User\Api\UserVehicleRepositoryInterface;
+use Modules\User\Infrastructure\Repositories\UserVehicleRepository;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,9 @@ class UserServiceProvider extends ServiceProvider
      *
      * @var array<string, string>
      */
-    public array $bindings = [];
+    public array $bindings = [
+        UserVehicleRepositoryInterface::class => UserVehicleRepository::class
+    ];
 
     public function boot(): void
     {

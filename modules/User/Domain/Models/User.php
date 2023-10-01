@@ -9,6 +9,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -50,6 +51,8 @@ use Modules\User\Infrastructure\Database\Factories\UserFactory;
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @method static UserFactory factory($count = null, $state = [])
+ * @property-read Collection<int, \Modules\User\Domain\Models\UserVehicle> $vehicles
+ * @property-read int|null $vehicles_count
  * @mixin Eloquent
  */
 class User extends Authenticatable
@@ -100,5 +103,13 @@ class User extends Authenticatable
     protected static function newFactory(): UserFactory
     {
         return new UserFactory();
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function vehicles(): HasMany
+    {
+        return $this->hasMany(UserVehicle::class, 'user_id', 'id');
     }
 }

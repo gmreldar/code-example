@@ -59,4 +59,19 @@ class Vehicle extends Model
         'popular' => 'boolean',
         'models' => 'array',
     ];
+
+    /**
+     * @param string $modelId
+     * @return array<string, string>
+     */
+    public function getModelById(string $modelId): array
+    {
+        $models = $this->models;
+        foreach ($models as $model) {
+            if ($model['id'] == $modelId) {
+                return $model;
+            }
+        }
+        return [];
+    }
 }
