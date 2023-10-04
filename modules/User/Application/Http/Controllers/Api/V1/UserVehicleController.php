@@ -6,8 +6,6 @@ namespace Modules\User\Application\Http\Controllers\Api\V1;
 
 use App\Exceptions\UnauthorizedHttpException;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Support\Facades\Auth;
 use Modules\User\Api\UserVehicleRepositoryInterface;
 use Modules\User\Application\Http\Requests\UserVehicleAddRequest;
 use Modules\User\Application\Http\Resources\UserVehicleResource;
