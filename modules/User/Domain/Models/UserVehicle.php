@@ -47,6 +47,7 @@ use Modules\Vehicle\Infrastructure\Enums\FuelType;
  * @method static Builder|UserVehicle whereVin($value)
  * @property string $model_id
  * @method static Builder|UserVehicle whereModelId($value)
+ * @method static \Modules\User\Infrastructure\Database\Factories\UserVehicleFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class UserVehicle extends Model
