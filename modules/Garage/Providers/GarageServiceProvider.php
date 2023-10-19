@@ -2,18 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Providers;
+namespace Modules\Garage\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Garage\Api\GarageRepositoryInterface;
+use Modules\Garage\Infrastructure\Repositories\GarageRepository;
 
-class UserServiceProvider extends ServiceProvider
+class GarageServiceProvider extends ServiceProvider
 {
     /**
      * All the container bindings that should be registered.
      *
      * @var array<string, string>
      */
-    public array $bindings = [];
+    public array $bindings = [
+        GarageRepositoryInterface::class => GarageRepository::class
+    ];
 
     public function boot(): void
     {

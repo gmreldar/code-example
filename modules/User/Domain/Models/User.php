@@ -17,6 +17,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\PersonalAccessToken;
+use Modules\Garage\Domain\Models\Garage;
 use Modules\User\Infrastructure\Database\Factories\UserFactory;
 
 /**
@@ -53,6 +54,8 @@ use Modules\User\Infrastructure\Database\Factories\UserFactory;
  * @method static UserFactory factory($count = null, $state = [])
  * @property-read Collection<int, \Modules\User\Domain\Models\UserVehicle> $vehicles
  * @property-read int|null $vehicles_count
+ * @property-read Collection<int, Garage> $garages
+ * @property-read int|null $garages_count
  * @mixin Eloquent
  */
 class User extends Authenticatable
@@ -108,8 +111,8 @@ class User extends Authenticatable
     /**
      * @return HasMany
      */
-    public function vehicles(): HasMany
+    public function garages(): HasMany
     {
-        return $this->hasMany(UserVehicle::class, 'user_id', 'id');
+        return $this->hasMany(Garage::class, 'user_id', 'id');
     }
 }

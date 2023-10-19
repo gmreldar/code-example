@@ -6,7 +6,9 @@ namespace Modules\Expense\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Expense\Api\ExpenseCategoryRepositoryInterface;
+use Modules\Expense\Api\ExpenseRepositoryInterface;
 use Modules\Expense\Infrastructure\Repositories\ExpenseCategoryRepository;
+use Modules\Expense\Infrastructure\Repositories\ExpenseRepository;
 
 class ExpenseServiceProvider extends ServiceProvider
 {
@@ -16,12 +18,13 @@ class ExpenseServiceProvider extends ServiceProvider
      * @var array<string, string>
      */
     public array $bindings = [
-        ExpenseCategoryRepositoryInterface::class => ExpenseCategoryRepository::class
+        ExpenseCategoryRepositoryInterface::class => ExpenseCategoryRepository::class,
+        ExpenseRepositoryInterface::class => ExpenseRepository::class
     ];
 
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../Infrastructure/Database/Migrations');
+//        $this->loadMigrationsFrom(__DIR__ . '/../Infrastructure/Database/Migrations');
     }
 
     /**

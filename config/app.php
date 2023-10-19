@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Authorization\Providers\AuthorizationServiceProvider;
 use Modules\Expense\Providers\ExpenseServiceProvider;
+use Modules\Garage\Providers\GarageServiceProvider;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Vehicle\Providers\VehicleServiceProvider;
 use MongoDB\Laravel\MongoDBServiceProvider;
@@ -181,6 +182,7 @@ return [
         AuthorizationServiceProvider::class,
         VehicleServiceProvider::class,
         ExpenseServiceProvider::class,
+        GarageServiceProvider::class,
 
     ])->toArray(),
 
