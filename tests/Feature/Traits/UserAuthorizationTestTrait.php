@@ -8,9 +8,13 @@ use Modules\User\Domain\Models\User;
 
 trait UserAuthorizationTestTrait
 {
-    public function getToken(): string
+    public function getToken(?int $userId = null): string
     {
-        $user = User::factory()->create();
+        if (!$userId) {
+            $user = User::factory()->create();
+        } else {
+            $user = User::find($userId);
+        }
         $loginData = [
             'email' => $user->email,
             'password' => 'q1w2e3r4'

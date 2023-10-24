@@ -46,7 +46,8 @@ class GarageFactory extends Factory
             'power' => rand(100, 300),
             'purchase_date' => now()->subYears(rand (1, 3)),
             'fuel_type' => FuelType::AI_95,
-            'model_id' => $models[0]['id']
+            'model_id' => $models[0]['id'],
+            'is_default' => $this->faker->boolean
         ];
     }
 }

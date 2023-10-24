@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Exists;
 use Modules\User\Domain\Models\User;
 
-class GarageAddRequest extends FormRequest
+class GarageCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

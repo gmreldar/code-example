@@ -71,6 +71,7 @@ class Garage extends Model
         'purchase_date',
         'fuel_type',
         'model_id',
+        'is_default',
     ];
 
     /**

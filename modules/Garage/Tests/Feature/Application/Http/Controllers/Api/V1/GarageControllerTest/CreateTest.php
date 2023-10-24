@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Garage\Tests\Feature\Application\Http\Controllers\Api\V1;
+namespace Modules\Garage\Tests\Feature\Application\Http\Controllers\Api\V1\GarageControllerTest;
 
 use Illuminate\Database\RecordsNotFoundException;
 use Illuminate\Support\Facades\Auth;
@@ -12,13 +12,13 @@ use Modules\Vehicle\Infrastructure\Enums\FuelType;
 use Tests\Feature\Traits\UserAuthorizationTestTrait;
 use Tests\TestCase;
 
-class GarageControllerTest extends TestCase
+class CreateTest extends TestCase
 {
     use UserAuthorizationTestTrait;
 
     public function testAdd(): void
     {
-        $token = $this->getToken();
+        $token = $this->getToken(584);
         $headers = [
             'Authorization' => 'Bearer' . $token,
             'Accept' => 'application/json',
