@@ -31,7 +31,7 @@ interface GarageRepositoryInterface
     /**
      * Обновить автомобиль пользователя
      *
-     * @param array $userVehicle
+     * @param array<string, mixed> $userVehicle
      * @return void
      */
     public function update(array $userVehicle): void;

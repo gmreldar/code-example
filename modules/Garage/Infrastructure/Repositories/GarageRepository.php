@@ -39,7 +39,7 @@ class GarageRepository implements GarageRepositoryInterface
     /**
      * Обновить автомобиль пользователя
      *
-     * @param array $userVehicle
+     * @param array<string, mixed> $userVehicle
      * @return void
      * @throws Exception
      */

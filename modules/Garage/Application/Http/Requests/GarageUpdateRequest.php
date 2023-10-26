@@ -4,14 +4,27 @@ declare(strict_types=1);
 
 namespace Modules\Garage\Application\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Exists;
 use Modules\Garage\Domain\Rules\IsCurrentMileageMoreThenInitialRule;
 use Modules\User\Domain\Models\User;
 use Modules\User\Domain\Rules\IsVehicleBelongsToUserRule;
 
+/**
+ * @property int $id
+ * @property int $vehicle_id
+ * @property string $model_id
+ * @property int $manufacture_year
+ * @property string $vin
+ * @property int $initial_mileage
+ * @property int $current_mileage
+ * @property int $power
+ * @property Carbon $purchase_date
+ * @property int $fuel_type
+ * @property bool $is_default
+ */
 class GarageUpdateRequest extends FormRequest
 {
     /**
@@ -25,7 +38,7 @@ class GarageUpdateRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, array<int, Exists|string>>
+     * @return array<string, array<int, mixed>>
      * @throws AuthenticationException
      */
     public function rules(): array

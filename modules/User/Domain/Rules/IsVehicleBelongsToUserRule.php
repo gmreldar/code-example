@@ -17,7 +17,7 @@ class IsVehicleBelongsToUserRule implements Rule
 
     public function passes($attribute, $value): bool
     {
-        if (!$this->userId || !is_int($this->userId) || !$value) {
+        if (!$this->userId || !$value) {
             return false;
         }
         $garage = Garage::whereVehicleId($value)->whereUserId($this->userId)->first();

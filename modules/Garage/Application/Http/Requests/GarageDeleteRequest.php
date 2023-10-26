@@ -39,7 +39,7 @@ class GarageDeleteRequest extends FormRequest
      * Объединить параметры с урла с post-параметрами
      *
      * @param array<mixed>|mixed|null $keys
-     * @return array
+     * @return array<mixed>
      */
     public function all($keys = null): array
     {
